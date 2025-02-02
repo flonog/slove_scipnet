@@ -44,8 +44,8 @@ discordClient.GetEventHandler().RegisterEvent(new LockChannels());
 
 let db = discordClient.GetDb();
 db.run("CREATE TABLE IF NOT EXISTS rp_player (user_id INT, channel_id TEXT, name TEXT, UNIQUE(user_id, channel_id));");
-db.run("CREATE TABLE IF NOT EXISTS rp_channels (channel_id TEXT;");
-db.run("CREATE TABLE IF NOT EXISTS rp_webhooks (channel_id TEXT, webhook TEXT;");
+db.run("CREATE TABLE IF NOT EXISTS rp_channels (channel_id TEXT, UNIQUE(channel_id));");
+db.run("CREATE TABLE IF NOT EXISTS rp_webhooks (channel_id TEXT, webhook TEXT, UNIQUE(channel_id, webhook));");
 db.run( 'PRAGMA journal_mode = WAL;' );
 
 db.close();
